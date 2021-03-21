@@ -9,3 +9,10 @@ class MagaluItem(Item):
     url = Field()
     name = Field()
     price = Field()
+    freight = Field()
+
+class FreightItem(Item):
+    url = Field()
+    deadline = Field()
+    description = Field()
+    price = Field()

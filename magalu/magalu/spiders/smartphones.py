@@ -1,13 +1,11 @@
 # import do scrapy para usar as classes que o pacote fornece.
-import scrapy
-
-from scrapy import Request
+from scrapy import Spider, Request
 
 from magalu.items import MagaluItem
 
 # a partir a classe Spider, crio uma subclasse SmartphonesSpider
 # possui métodos e comportamentos que definem como seguir URLs e extrair dados das páginas que encontrar para saber onde procurar e quais dados procurar. 
-class SmartphonesSpider(scrapy.Spider):
+class SmartphonesSpider(Spider):
     name = 'smartphones'
     allowed_domains = ['magazineluiza.com.br']
     base_url = 'https://www.magazineluiza.com.br'
@@ -45,3 +43,6 @@ class SmartphonesSpider(scrapy.Spider):
             next_page = response.xpath("//link[@rel='next']/@href").get()
             if next_page:
                 yield Request(self.base_url + next_page, callback=self.parse)
+
+                
+        
